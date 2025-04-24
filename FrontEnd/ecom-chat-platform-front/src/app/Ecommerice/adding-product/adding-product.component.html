@@ -1,0 +1,226 @@
+
+    
+<header>
+     
+
+  <div class="row m-1">
+    <div class="col-4 text-start  mt-3">
+      <mat-icon class="headIcon">list</mat-icon>
+  </div>
+    <div class="col-5 text-center ">
+      <div class="row">
+          <div class="col-2 text-end mt-2">
+              <li><a href="#home">Home</a></li>
+            </div>
+            <div class="col-2 mt-2">
+              <li><a href="#sellers">Shop</a></li>
+            </div>
+            <div class="col-2 mt-2">
+              <li><a href="#news">Blog</a></li>
+            </div>
+            <div class="col-2 mt-2">
+              <li><a href="#contact">Contact</a></li>
+            </div>
+            <div class="col-2 mt-2">
+              <li><a href="#contact">Admin</a></li>
+            </div>
+      </div>
+  </div>
+    <div class="col-2">
+      <div class="row">
+          <div class="col-md-1 mt-3">
+              <mat-icon  class="headIcon">search</mat-icon>
+          </div>
+          <div class="col-md-9">
+          <div class="search-hero">
+              <input class="form-control" type="text" name="search"  autocomplete="off" placeholder="searching.."> 
+              </div>
+          </div>
+          <div class="col-md-2">
+          </div>
+      </div>
+  </div>
+    <div class="col-1 text-end">
+      <div class="row">
+          <div class="col mt-3">
+              <mat-icon class="headIcon">favorite</mat-icon>
+          </div>
+          <div class="col mt-3">
+              <mat-icon class="headIcon">shopping_cart</mat-icon>
+          </div>
+          <div class="col mt-3">
+              <mat-icon class="headIcon">account_circle</mat-icon>
+          </div>
+      </div>
+  </div>
+  </div>
+
+</header>
+
+
+    <mat-card>
+        <mat-card-content >
+
+            <!-- <mat-toolbar >
+              
+                
+            </mat-toolbar> -->
+            <div class="conaiter mainCard">
+
+            <div class="row">
+              <!--  -->
+              <!-- col-lg-6 col-xl-6 col-xxl-6 mt-5 -->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mt-5 ">
+        
+                    <mat-card class="mat-card_1" >
+                        <div class="image-des text-center row "(click)="uploadImage()" id="image-des">
+                            
+                            <h1 style="margin-top: 270px;"><mat-icon >add_photo_alternate</mat-icon> Upload image</h1>
+                        </div>
+                        
+                         <div class="img" id="img"> 
+                           
+                        </div> 
+
+                        <div id="carouselExampleIndicators" class="carousel slide">
+                            <div class="carousel-indicators">
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                              <div class="carousel-item active" id="imageDis">
+                                <img src={{FileSource}} class="d-block w-100" alt="...">
+                              </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" (click)="prevImage()" >
+                              <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: black;"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next"(click)="nextImage()">
+                              <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: black;"></span>
+                              <span class="visually-hidden" >Next</span>
+                            </button>
+                          </div>
+
+                          
+                          <div class="row justify-content-center">
+                            <div class="col-2 mt-3 text-center">
+                                <button mat-raised-button class="changeBtn" id="changeBtn">Change</button>
+                            </div>
+                          </div>
+                          
+        
+                    </mat-card>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mt-5 ">
+                    <mat-card>
+                        <mat-card-content class="text-center mb-5">Product Form</mat-card-content>
+
+                        <div class="container text-center">
+
+                            <form id="contact" class="formCard" action="" method="post" [formGroup]="ProductData">
+                      
+                                <!-- <h5>Product Data </h5> -->
+                                <!-- <fieldset>
+                                  <input placeholder="Product Name" type="text" tabindex="1" required autofocus>
+                                </fieldset> -->
+                          
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Product Name</mat-label>
+                                  <input [formControl]="ProductData.controls.ProductName" matInput placeholder="Product Name" >
+                                </mat-form-field>
+                               
+                               
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Category</mat-label>
+                                  <mat-select [formControl]="ProductData.controls.ProductCategory" (selectionChange)="getData($event)">
+                                    <mat-option *ngFor="let Category of Category" [value]="Category.CatId">
+                                      {{Category.CatName}}
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                          
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Brand</mat-label>
+                                  <mat-select [formControl]="ProductData.controls.ProductBrand">
+                                    <mat-option  *ngFor="let Brand of filterBrandList" [value]="Brand.SubCatId">
+                                      {{Brand.SubCatName}}
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                          
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Price</mat-label>
+                                  <input [formControl]="ProductData.controls.ProductPrice" matInput placeholder="Price" type="number" >
+                                </mat-form-field>
+
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>MemeorySize</mat-label>
+                                  <input [formControl]="ProductData.controls.MemorySize" matInput placeholder="Price" type="number" >
+                                </mat-form-field>
+                          
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>ScreenSize</mat-label>
+                                  <input [formControl]="ProductData.controls.ScreenSize" matInput placeholder="ScreenSize" type="number" >
+                                </mat-form-field>
+
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>BatterySize</mat-label>
+                                  <input [formControl]="ProductData.controls.BatterySize" matInput placeholder="BatterySize" type="number" >
+                                </mat-form-field>
+                          
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Quantity</mat-label>
+                                  <input [formControl]="ProductData.controls.ProductQuantity" matInput placeholder="Quantity" type="number" >
+                                </mat-form-field>
+
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Os</mat-label>
+                                  <input [formControl]="ProductData.controls.Os" matInput placeholder="Os" type="test" >
+                                </mat-form-field>
+
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Popularity</mat-label>
+                                  <input [formControl]="ProductData.controls.Popularity" matInput placeholder="Popularity" type="number" >
+                                </mat-form-field>
+
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Popularity</mat-label>
+                                  <input [formControl]="ProductData.controls.releaseDate" matInput placeholder="Product ReleaseDate" type="date" >
+                                </mat-form-field>
+
+                                <section class="example-section mb-3 ">
+                                  <mat-checkbox [formControl]="ProductData.controls.productStatus" class="example-margin" form>Active</mat-checkbox>
+                                </section>                                                                      
+                              
+                                <!-- <p class="copyright">Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a></p> -->
+                              </form>
+
+                        </div>
+                     
+                   
+                </mat-card>
+        
+                </div>
+            </div>
+          </div>
+            <div class="row justify-content-end me-5">
+                <div class="col-1 mt-3 ">
+                    <button mat-raised-button color="primary" class="changeBt" id="changeBt" (click)="saveProductData()" >Save</button>
+                </div>
+            </div>
+        </mat-card-content>
+
+    </mat-card>
+       
+    <input (change)="getFiles($event)" style="display: none;" type="file" id="image-upload" >
+
+
+    
+    
+            
+
+
+
+

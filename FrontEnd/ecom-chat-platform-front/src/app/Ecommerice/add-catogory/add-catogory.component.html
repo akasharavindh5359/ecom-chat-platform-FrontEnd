@@ -1,0 +1,121 @@
+
+<header class="admin-header">
+    <div class="logo">
+      <img src="assets/Images/newAkLogo.jpg" alt="Admin Logo" />
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Users</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+
+
+<!-- <div class="conaiter">
+  <div class="row"> -->
+    <div class="conaiter">
+      <div class="row ">
+        <div class="col d-flex justify-content-center" *ngIf="AddCate">
+          <div class="CategoryCard">
+            <h2>Add Category</h2>
+            <form>
+                <label for="categoryName">Category Name:</label>
+                <input type="text" id="categoryName" [(ngModel)]="catName" name="categoryName" required>
+        
+                <label for="categoryImage">Category Image:</label>
+                <input type="file" id="categoryImage" (change)="getFiles($event)" name="categoryImage" accept="image/*"
+                    required>
+        
+                <button type="submit" (click)="AddCategory()">Add Category</button>
+            </form>
+        </div>
+    
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="container">
+                <table border="1">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Image</th>
+                      <th>Image Name</th>
+                      <th>SubCate</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let row of tableData; let i = index">
+                      <td>{{i+1}}</td>
+                      <td><img [src]="row.image" alt="Image" width="100" height="100"></td>
+                      <td>{{ row.imageName }}</td>
+                      <td><button (click)="UpdateCall(i)" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Update</button></td>
+
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+
+  <!-- </div>
+</div> -->
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Update Category</h1>
+        
+      </div>
+      <div class="modal-body">
+        <div class="UpdateCategoryCard">
+        <form >
+          <label for="categoryName">Category Name:</label>
+          <input type="text" id="categoryName1" [(ngModel)]="catName" (change)="getFiles($event)"  name="categoryName" required>
+  
+          <label for="categoryImage">Category Image:</label>
+          <mat-chip  >
+            <img  matChipAvatar id="update_catImg" src={{catimg}} alt="Photo of a Shiba Inu"/>
+            Change Category Image :
+          </mat-chip>
+          <input type="file"  id="categoryImage" (change)="getFiles($event)" name="categoryImage" accept="image/*"
+              required>
+              <label for="categoryImage">Add SubCategory:</label>
+              <!-- <input type="textarea" id="NameSubCategory" [(ngModel)]="catName" name="NameSubCategory" required> -->
+              <mat-form-field class="example-chip-list">
+                <!-- <mat-label>Favorite Fruits</mat-label> -->
+                <mat-chip-grid #chipGrid aria-label="Enter fruits">
+                  <mat-chip-row *ngFor="let fruit of subCatName"
+                                (removed)="remove(fruit)"
+                                [editable]="true"
+                                (edited)="edit(fruit, $event)"
+                                [aria-description]="'press enter to edit ' + fruit.name">
+                    {{fruit.name}}
+                    <button class="iconButton" matChipRemove [attr.aria-label]="'remove ' + fruit.name">
+                      <mat-icon class="cancelIcon">cancel</mat-icon>
+                    </button>
+                  </mat-chip-row>
+                  <input placeholder="New SubCategory..."
+                         [matChipInputFor]="chipGrid"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)"/>
+                </mat-chip-grid>
+              </mat-form-field>
+          <button type="submit" (click)="UpdateCategory()" >Update Category</button>
+          <button type="submit" id="closeButton" (click)="closeData()" data-bs-dismiss="modal" aria-label="Close">Close</button>
+      </form>
+    </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

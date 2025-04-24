@@ -1,0 +1,29 @@
+<div class="login-box">
+    <h2>Hey  Dev... </h2>
+    
+    <form  class="form" [formGroup]="formValue">
+  
+      <div class="user-box">
+        <input type="text" name="" formControlName="username" required="">
+        <label>Username</label>
+      </div>
+      <div class="user-box">
+        <input type="password" name="" formControlName="password" required="">
+        <label>Password</label>
+      </div>
+      <a  (click)="submitdata()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Login
+      </a>
+      <a style="margin-left: 90px; color: aliceblue; font-size: 9px;" href="sigin">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        sigin
+      </a>
+    </form>
+  </div>

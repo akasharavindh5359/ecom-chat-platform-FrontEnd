@@ -1,0 +1,38 @@
+<div class="form-container">
+    <h2>Upload Your Content</h2>
+
+
+    <form action="#" method="POST" enctype="multipart/form-data" class="input-form">
+        
+        <label for="header-title">Header Title:</label>
+        <input type="text" id="header-title" name="header-title" placeholder="Enter header title" required>
+
+        <label for="subheader-title">Subheader Title:</label>
+        <input type="text" id="subheader-title" name="subheader-title" placeholder="Enter subheader title" required>
+
+        <label for="banner-text">Banner Text:</label>
+        <textarea id="banner-text" name="banner-text" placeholder="Enter banner content" required></textarea>
+
+        <label for="banner-image">Upload Banner Image:</label>
+        <input type="file" id="banner-image" name="banner-image" accept="image/*" required>
+
+        <label for="video-file">Upload Video File:</label>
+        <input type="file" id="video-file" name="video-file" accept="video/*" required>
+
+        <label for="image-file">Upload Image File:</label>
+        <input type="file" id="image-file" name="image-file" accept="image/*" required>
+
+        <label for="additional-banner-content">Additional Banner Content:</label>
+        <textarea id="additional-banner-content" name="additional-banner-content" placeholder="Enter additional banner content" required></textarea>
+
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
+
+
+
+<!-- <input type="file" id="homeBackgroundImage" (change)="getFiles($event)" name="homeBackgroundImage" accept="video/mp4, video/mov" required>
+<video   autoplay loop width="320" height="240">
+  <source src="/assets/Images/98026-646632863.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video> -->
